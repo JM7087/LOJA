@@ -56,7 +56,7 @@ public class LoginDAO implements DAO {
 
         try {
             conn = this.conn;
-            ps = conn.prepareStatement("select * from login where LOG_EMAIL=? and LOG_SENHA=?");
+            ps = conn.prepareStatement("select * from LOGIN where LOG_EMAIL=? and LOG_SENHA=?");
             ps.setString(1, email);
             ps.setString(2, senha);
             rs = ps.executeQuery();

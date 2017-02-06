@@ -5,30 +5,34 @@
 --%>
 
 <%
-    HttpSession sessao = request.getSession();//pegando a sessÃ£o ativa
+    HttpSession sessao = request.getSession();//pegando a sessão ativa
     if(sessao.getAttribute("statusLogin") == null){
         //dispacha o cabra pra tela de login
     }
 %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
     <head>
-
-        <title>Loja</title>
-
-        
         <%@include file="template/head.jsp" %>
+        
     </head>
     <body>
-        <!-- inÃ­cio do corpo do site -->
+        <!-- início do corpo do site -->
         <div class="container">
-            <%@include file="template/cabecalho.jsp" %>
-            
-            <%@include file="template/menu.jsp" %>
-            
-            <%@include file="template/body.jsp" %>
+            <!-- estas linhas abaixo são obrigatórias para chamar o cabeçalho, passando como parâmetro a página atual, para que possamos montar o menu superior -->
+            <jsp:include page="template/cabecalho.jsp" >
+                <jsp:param name="atual" value="inicio" />
+            </jsp:include>
+            <div class="row">
+                <div class="col-md-3">
+                    <%@include file="template/menu.jsp" %>
+                </div>    
+                <div class="col-md-9">
+                    <%@include file="template/body.jsp" %>
+                </div>    
+            </div>    
             
             <%@include file="template/rodape.jsp" %>
         </div>

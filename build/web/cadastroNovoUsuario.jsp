@@ -21,7 +21,9 @@
 
             <div class="container">
 
-                <%@include file="template/cabecalho.jsp" %>
+                <jsp:include page="template/cabecalho.jsp" >
+                    <jsp:param name="atual" value="inicio" />
+                </jsp:include>
 
                 <div class="form-group">
                     <label for="inputNome">Seu Nome</label>
@@ -40,33 +42,33 @@
                     <label for="inputTelefone">Seu Telefone</label>
                     <input type="text" class="form-control" name="inputTelefone" placeholder="Seu Telefone" required>
 
-                   
+
                     <label for="inputSexo">Seu Sexo</label>
                     <select class="form-control" id="inputSoxo" name="inputSexo">
                         <option>Selecione</option>
                         <option value="m">M</option>
                         <option value="f">F</option>                                            
                     </select>             
-                    
+
                     <label for="inputEndereco">Seu Endereço</label>
                     <input type="text" class="form-control" name="inputEndereco" placeholder="Seu Endereço" required>
 
                     <label for="inputCep">Seu CEP</label>
                     <input type="text" class="form-control" name="inputCep" placeholder="Seu Cep" required>
-                       
+
                     <label for="inputCidade">Sua Cidade</label>
                     <input type="text" class="form-control" name="inputCidade" placeholder="Sua Cidade" required>
-                    
+
                     <label for="inputEstado">Seu Estado</label>
                     <input type="text" class="form-control" name="inputEstado" placeholder="Seu Estado" required>
-                    
+
                 </div>
-               <button class="btn btn-lg btn-primary " type="submit">Cadastrar</button>
+                <button class="btn btn-lg btn-primary " type="submit">Cadastrar</button>
 
         </form>
 
     </div>
-                <br></br>
+    <br></br>
     <%@include file="template/rodape.jsp" %>
 
 </body>

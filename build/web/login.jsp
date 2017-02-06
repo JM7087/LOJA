@@ -24,17 +24,10 @@
   <body>
       
    <div class="container">
-       <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="index.jsp">Inicio</a></li>
-            <li role="presentation" class="active"><a href="#">Login</a></li>
-            <li role="presentation"><a href="#">Carrinho</a></li>
-            <li role="presentation"><a href="PainelDeControleUsuario.jsp">Conta</a></li>
-          </ul>
-        </nav>
-                   <h3 class="text-muted">LOJA</h3>
-       </div>
+       <!-- estas linhas abaixo são obrigatórias para chamar o cabeçalho, passando como parâmetro a página atual, para que possamos montar o menu superior -->
+            <jsp:include page="template/cabecalho.jsp" >
+                <jsp:param name="atual" value="login" />
+            </jsp:include>
    </div>
       
     <div class="container">

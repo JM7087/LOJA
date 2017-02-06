@@ -18,33 +18,45 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-
-        <title>Loja</title>
-
-        
+    <head>        
         <%@include file="template/head.jsp" %>
+        <style>
+            .btn-menu{
+                width: 100%;
+                margin-bottom: 2px;
+                text-align: center;
+            }
+        </style>    
     </head>
     <body>
         <!-- início do corpo do site -->
         <div class="container">
-<div class="container">
-       <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="index.jsp">Inicio</a></li>
-            <li role="presentation"><a href="login.jsp">Login</a></li>
-            <li role="presentation"><a href="#">Carrinho</a></li>
-            <li role="presentation" class="active"><a href="#" >Conta</a></li>
-          </ul>
-        </nav>
-                   <h3 class="text-muted">LOJA</h3>
-       </div>
-   </div>            
+                    <!-- estas linhas abaixo são obrigatórias para chamar o cabeçalho, passando como parâmetro a página atual, para que possamos montar o menu superior -->
+                    <jsp:include page="template/cabecalho.jsp" >
+                        <jsp:param name="atual" value="conta" />
+                    </jsp:include>        
             
-            
-            <center><a href="CadastroDeProdutosParaVender.jsp" class="btn btn-success" role="button">Cadastro de Produtos para Vender</a></center>
-            
+           
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="CadastroDeProdutosParaVender.jsp" class="btn btn-success btn-menu" role="button">Cadastro de Produtos</a>
+                    <a href="ControladorProdutos?cmd=listarProdutos" class="btn btn-success btn-menu" role="button">Meus Produtos - </a>
+                    <a href="ControladorVendas.jsp?cmd=listarVendas" class="btn btn-success btn-menu" role="button">Minhas Vendas - </a>
+                    
+                </div>
+                <div class="col-md-9">
+                    <h3>Painel de controle - Cliente/Vendedor</h3>
+                    
+                        <%
+                            if (request.getAttribute("mensagem")!=null) {                   
+                        %>
+                        <p style="color:red"><%= request.getAttribute("mensagem") %></p>
+                        <%
+                            }                
+                        %>
+                    
+                </div>    
+            </div>
             <%@include file="template/rodape.jsp" %>
         </div>
         <!-- fim do corpo do site -->

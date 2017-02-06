@@ -1,4 +1,4 @@
-<meta charset="utf-8">
+<meta charset="iso-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -6,7 +6,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Narrow Jumbotron Template for Bootstrap</title>
+    <title>JM Express</title>
 
     <!-- Bootstrap core CSS -->
     <link href="template/dist/css/bootstrap.min.css" rel="stylesheet">
