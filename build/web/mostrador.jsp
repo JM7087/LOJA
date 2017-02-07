@@ -4,6 +4,8 @@
     Author     : JM7087-Notbook
 --%>
 
+<%@page import="cdc.util.ItemCarrinho"%>
+<%@page import="javax.websocket.Session"%>
 <%@page import="cdc.util.FotoDAO"%>
 <%@page import="model.Foto"%>
 <%@page import="java.util.List"%>
@@ -12,14 +14,23 @@
 <%@page import="cdc.util.ProdutoDAO"%>
 
 <%
+//    int id_pro = Integer.parseInt(request.getParameter("PRO_ID"));
+//    String cmd = request.getParameter("cmd");
+//    if(cmd.equalsIgnoreCase("compra")){
+//        HttpSession sessao = request.getSession();
+//        List<ItemCarrinho> carrinho = new ArrayList<ItemCarrinho>();
+//        carrinho = (ArrayList<ItemCarrinho>) sessao.getAttribute("carrinho");
+//        
+//        carrinho.add(new ItemCarrinho(new Produto(id_pro, null, null, 0.0, 0, null, null)));
+//        
+//        sessao.setAttribute("carrinho", carrinho);
+//    }
     
-    
-    
-   
+String categoria = request.getParameter("categoria");
 
 ProdutoDAO produtoDAO = new ProdutoDAO();
 List<Produto> lista;
-lista = produtoDAO.listaTodos();
+lista = produtoDAO.listaCategoria(categoria);
 
 FotoDAO fotoDAO = new FotoDAO();
 List<Foto> fotoliList;
@@ -48,7 +59,8 @@ fotoliList = fotoDAO.listaTodos();
 
                     <fieldset>
                         
-                        <legend><strong>Jogos de PS4</strong></legend>
+                        <legend><strong><%= categoria %></strong></legend>
+                    <% if(lista.size()>0) { %>    
                         <table align="center" border="1px" width="90%">
                         <tr>  
                             <th>Codigo</th>
@@ -82,13 +94,13 @@ fotoliList = fotoDAO.listaTodos();
                             <th><%= p.getPRO_QUANTIDADE() %></th>
                             <th><%= p.getPRO_MARCA() %></th>
                             <th><%= p.getPRO_CATEGORIA() %></th>
-                            <td><a href="ControladorCompras?cmd=compra&PRO_ID=<%= p.getPRO_ID() %>">Comprar </a></td>
+                            <td><a href="mostrador.jsp?cmd=compra&PRO_ID=<%= p.getPRO_ID() %>">Adicionar ao Carrinho </a></td>
                         </tr>
                         <%      
                           }
                         %>
                         </table>
-                        
+                <% }else{ out.println("<h2>Nenhum Produto Encontrado.</h2>");} %>        
                     </fieldset>
 
                 </div>    

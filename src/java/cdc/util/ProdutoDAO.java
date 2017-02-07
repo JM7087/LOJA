@@ -111,7 +111,43 @@ public class ProdutoDAO implements DAO{
         } 
         return id;
     }
-    
+    public List<Produto> listaCategoria(String categoria) throws Exception{
+        List<Produto> list = new ArrayList<Produto>();
+        ResultSet rs = null;
+        
+        if(categoria == null)
+            categoria="";
+        try{
+            conn = ConnectionDAO.getConnection();
+            String SQL = "SELECT * FROM PRODUTOS WHERE PRO_CATEGORIA LIKE '%"+categoria+"%'";
+            
+            ps = conn.prepareStatement(SQL);
+            //ps.setString(1, categoria);
+            
+            rs = ps.executeQuery();
+            
+            while(rs.next()){
+                Integer pro_id = rs.getInt(1);
+                String pro_nome = rs.getString(2);
+                String pro_descricao = rs.getString(3);
+                double pro_valor = rs.getDouble(4);
+                Integer pro_quatidade = rs.getInt(5);
+               // byte[] pro_fotos = rs.getBytes(6);
+                String pro_marca = rs.getString(7);
+                String pro_categoria = rs.getString(8);
+                list.add(new Produto(pro_id, pro_nome, pro_descricao, pro_valor, pro_quatidade, pro_marca, pro_categoria));
+            }
+
+        }catch(SQLException sqle){
+        //}catch(Exception e){
+            throw new Exception("Erro SQL:" + sqle);
+            //throw new Exception();
+        }finally{
+            ConnectionDAO.closeConnection(conn,ps,rs);
+        }        
+        
+        return list;
+    }
     @Override
     public List procura(Object ob) throws Exception {
          List<Produto> list = new ArrayList<Produto>();

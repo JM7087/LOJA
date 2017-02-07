@@ -6,11 +6,11 @@
 
 <div id="menu">
 		<ul>
-			<li><a href="JogosDePs4.jsp">Jogos de PS4</a></li>
-			<li><a href="">Categoria 2</a></li>
-			<li><a href="">Categoria 3</a></li>
-			<li><a href="">Categoria 4</a></li>
-			<li><a href="">Categoria 5</a></li>
+                        <li><a href="mostrador.jsp">Ver Todos</a></li>
+			<li><a href="mostrador.jsp?categoria=Jogo de PS4">Jogos de PS4</a></li>
+			<li><a href="mostrador.jsp?categoria=Livros">Livros</a></li>
+			<li><a href="mostrador.jsp?categoria=Jogos de XBOX">Jogos de XBox</a></li>
+			<li><a href="mostrador.jsp?categoria=SmartPhone">SmartPhone</a></li>
 			
 		</ul>
 	</div>

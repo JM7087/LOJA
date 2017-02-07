@@ -75,7 +75,7 @@ public class Upload {
                                 fileName = optionalFileName;
                             }
                             String dirName = request.getServletContext().getRealPath(pasta);                            
-                            File saveTo = new File(dirName + fileName);
+                            File saveTo = new File(dirName +"/"+ fileName);
                             //verificando se a pasta existe. Caso contrário, criará ela
                             File pasta = new File(dirName);
                             if (!pasta.exists())

@@ -12,6 +12,10 @@
 <%@page import="cdc.util.ProdutoDAO"%>
 
 <%
+    
+    
+    
+   
 
 ProdutoDAO produtoDAO = new ProdutoDAO();
 List<Produto> lista;
@@ -60,13 +64,19 @@ fotoliList = fotoDAO.listaTodos();
                          </tr>
                          <%                                                                                                            
                             for(Produto p: lista ){
-                            
-                            for (Foto f: fotoliList){                  
+                                int idProduto = p.getPRO_ID(); 
+                                fotoliList = fotoDAO.procura(new Foto(0, null, idProduto));
+                                String srcFoto;
+                                if (fotoliList.size()>0)
+                                    srcFoto = "img/imgupload/"+idProduto+"/"+fotoliList.get(0).getFOTO_NOME();
+                                else
+                                    srcFoto = "img/imgupload/semfoto.jpg";
+                                             
                         %>
                         <tr>
                             <th><%= p.getPRO_ID() %></th>
                             <th><%= p.getPRO_NOME() %></th>
-                            <th><img src="D:/NetBeansProjects/LOJA/build/web/img/imgupload/<%= p.getPRO_ID() %>/<%= f.getFOTO_NOME() %>"  width="50" height="50"></th>
+                            <th><img width="50" height="50" src="<%= srcFoto %>"/></th>
                             <th><%= p.getPRO_DESCRICAO() %></th>
                             <th><%= p.getPRO_VALOR() %></th>
                             <th><%= p.getPRO_QUANTIDADE() %></th>
@@ -75,7 +85,7 @@ fotoliList = fotoDAO.listaTodos();
                             <td><a href="ControladorCompras?cmd=compra&PRO_ID=<%= p.getPRO_ID() %>">Comprar </a></td>
                         </tr>
                         <%      
-                                                }}
+                          }
                         %>
                         </table>
                         
